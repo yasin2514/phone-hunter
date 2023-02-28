@@ -55,7 +55,7 @@ const displayData = (data, item) => {
         const { image, brand, phone_name, slug } = phone;
         const div = document.createElement('div');
         div.innerHTML = `
-        <div class="card  lg:card-side bg-base-100 h-full border rounded-md bg-gray-900 shadow-xl">
+        <div class="card  lg:card-side bg-base-100 h-full border rounded-md bg-gray-900 shadow-xl max-w-xs lg:max-w-full">
             <figure class="p-4"><img src="${image}" class="rounded-lg" alt="Album" /></figure>
             <div class="card-body ">
                 <h2 class="card-title">${phone_name}</h2>

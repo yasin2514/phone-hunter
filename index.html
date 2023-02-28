@@ -12,11 +12,11 @@
 
 </head>
 
-<body class="px-3">
-    <header class="my-10">
+<body class="px-3 md:px-0">
+    <header class="my-10 max-w-screen-2xl mx-auto">
         <h1 class="text-5xl text-center font-semibold">Welcome to <span class="text-orange-600">Phone Hunter</span></h1>
     </header>
-    <main class="my-10">
+    <main class="my-10 max-w-screen-2xl mx-auto">
         <!-- search input -->
         <section class=" max-w-3xl mx-auto lg:flex justify-center items-center gap-3 mb-20 ">
             <input id="input_field" type="text" placeholder="Search your phone"
@@ -45,7 +45,8 @@
         </section>
 
         <!-- card show -->
-        <section class="grid md:grid-cols-2 lg:grid-cols-3 py-10 w-10/12  mx-auto gap-5" id="card_show">
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 sm:place-content-center py-10 w-10/12  mx-auto gap-5"
+            id="card_show">
 
         </section>
         <section class="text-center hidden" id="show_all">
@@ -78,8 +79,9 @@
 
     </main>
     <footer class="text-center">
-        <p>develop by &copy; <span class="text-orange-600 font-semibold">Yasin Khan</span></p>
+        <p class="">develop by &copy; <span class="text-orange-600 font-semibold">Yasin Khan</span></p>
     </footer>
+
 
     <!-- js link -->
     <script src="./js/app.js"></script>
