@@ -100,8 +100,8 @@ const displayDetails = phone => {
     const [...sensor] = sensors;
     modal.innerHTML = `
     <div class="card  md:card-side bg-base-100">
-        <figure class="p-4 w-56"><img src="${image}" class="rounded-lg w-full" alt="Album" /></figure>
-        <div class="card-body w-52">
+        <figure class="p-4 md:w-56"><img src="${image}" class="rounded-lg w-full" alt="Album" /></figure>
+        <div class="card-body md:w-52">
             <h2 class="card-title">$${name}</h2>
             <p><span class="font-semibold">Brand:</span> ${brand}</p>
             <p><span class="font-semibold">Storage:</span> ${storage}</p>
