@@ -58,7 +58,7 @@ const displayData = (data, item) => {
         <div class="card  lg:card-side bg-base-100 h-full border rounded-md bg-gray-900 shadow-xl">
             <figure class="p-4"><img src="${image}" class="rounded-lg" alt="Album" /></figure>
             <div class="card-body ">
-                <h2 class="card-title">$${phone_name}</h2>
+                <h2 class="card-title">${phone_name}</h2>
                 <p>Brand: ${brand}</p>
                 <div class="card-actions">
                     <label onclick="loadId('${slug}')" for="my-modal-5" class="btn btn-sm btn-outline  border-orange-600 rounded-md text-orange-600 hover:bg-orange-600 hover:border-orange-600
@@ -98,18 +98,23 @@ const displayDetails = phone => {
     const { image, brand, name, releaseDate, mainFeatures, others } = phone;
     const { storage, displaySize, chipSet, memory, sensors } = mainFeatures;
     const [...sensor] = sensors;
+    let allValues = '';
+    for (const key in others) {
+        allValues = `${allValues} ${key} : ${others[key]},`;
+    }
     modal.innerHTML = `
     <div class="card  md:card-side bg-base-100">
         <figure class="p-4 w-full md:w-56"><img src="${image}" class="rounded-lg w-full" alt="Album" /></figure>
         <div class="card-body w-full md:w-52 px-2">
-            <h2 class="card-title">$${name}</h2>
+            <h2 class="card-title">${name}</h2>
             <p><span class="font-semibold">Brand:</span> ${brand}</p>
             <p><span class="font-semibold">Storage:</span> ${storage}</p>
             <p><span class="font-semibold">Display Size:</span> ${displaySize}</p>
             <p><span class="font-semibold">Chipset:</span> ${chipSet}</p>
             <p><span class="font-semibold">Memory:</span> ${memory}</p>
             <p><span class="font-semibold">Sensors:</span> ${sensor}</p>
-            <p>${releaseDate ? releaseDate : "no "}</p>
+            <p><span class="font-semibold">Others:</span> ${allValues ? allValues : 'none'}</p>
+            <p>${releaseDate}</p>
         </div>
     </div>
     <div class="modal-action">
