@@ -97,10 +97,9 @@ const displayDetails = phone => {
     const modal = document.getElementById('modal_section');
     const { image, brand, name, releaseDate, mainFeatures, others } = phone;
     const { storage, displaySize, chipSet, memory, sensors } = mainFeatures;
-    const { Bluetooth, GPS, NFC, Radio, USB } = others;
     const [...sensor] = sensors;
     modal.innerHTML = `
-    <div class="card  lg:card-side bg-base-100">
+    <div class="card  md:card-side bg-base-100">
         <figure class="p-4 w-56"><img src="${image}" class="rounded-lg w-full" alt="Album" /></figure>
         <div class="card-body w-52">
             <h2 class="card-title">$${name}</h2>
@@ -110,7 +109,6 @@ const displayDetails = phone => {
             <p><span class="font-semibold">Chipset:</span> ${chipSet}</p>
             <p><span class="font-semibold">Memory:</span> ${memory}</p>
             <p><span class="font-semibold">Sensors:</span> ${sensor}</p>
-            <p><span class="font-semibold">Others:</span> Bluetooth:${Bluetooth ? Bluetooth : 'no'}, GPS:${GPS ? GPS : 'no'}, NFC:${NFC ? NFC : 'no'}, Radio:${Radio ? Radio : 'no'}, USB:${USB ? USB : 'no'}</p>
             <p>${releaseDate ? releaseDate : "no "}</p>
         </div>
     </div>
