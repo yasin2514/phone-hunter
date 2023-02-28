@@ -52,7 +52,7 @@ const displayData = (data, item) => {
     }
     // display all data
     data.forEach(phone => {
-        const { image, brand, phone_name, slug } = phone
+        const { image, brand, phone_name, slug } = phone;
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="card  lg:card-side bg-base-100 h-full border rounded-md bg-gray-900 shadow-xl">
@@ -61,8 +61,8 @@ const displayData = (data, item) => {
                 <h2 class="card-title">$${phone_name}</h2>
                 <p>Brand: ${brand}</p>
                 <div class="card-actions">
-                    <button class="btn btn-sm btn-outline  border-orange-600 rounded-md text-orange-600 hover:bg-orange-600 hover:border-orange-600
-                    hover:text-white ">details</button>
+                    <label onclick="loadId('${slug}')" for="my-modal-5" class="btn btn-sm btn-outline  border-orange-600 rounded-md text-orange-600 hover:bg-orange-600 hover:border-orange-600
+                    hover:text-white">details</label>
                 </div>
             </div>
         </div>
@@ -86,3 +86,37 @@ const loadingShow = (ifNone) => {
         document.getElementById('loading_show').classList.add("hidden");
     }
 };
+// load details
+const loadId = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayDetails(data.data);
+}
+const displayDetails = phone => {
+    const modal = document.getElementById('modal_section');
+    const { image, brand, name, releaseDate, mainFeatures, others } = phone;
+    const { storage, displaySize, chipSet, memory, sensors } = mainFeatures;
+    const { Bluetooth, GPS, NFC, Radio, USB } = others;
+    const [...sensor] = sensors;
+    modal.innerHTML = `
+    <div class="card  lg:card-side bg-base-100">
+        <figure class="p-4 w-56"><img src="${image}" class="rounded-lg w-full" alt="Album" /></figure>
+        <div class="card-body w-52">
+            <h2 class="card-title">$${name}</h2>
+            <p><span class="font-semibold">Brand:</span> ${brand}</p>
+            <p><span class="font-semibold">Storage:</span> ${storage}</p>
+            <p><span class="font-semibold">Display Size:</span> ${displaySize}</p>
+            <p><span class="font-semibold">Chipset:</span> ${chipSet}</p>
+            <p><span class="font-semibold">Memory:</span> ${memory}</p>
+            <p><span class="font-semibold">Sensors:</span> ${sensor}</p>
+            <p><span class="font-semibold">Others:</span> Bluetooth:${Bluetooth ? Bluetooth : 'no'}, GPS:${GPS ? GPS : 'no'}, NFC:${NFC ? NFC : 'no'}, Radio:${Radio ? Radio : 'no'}, USB:${USB ? USB : 'no'}</p>
+            <p>${releaseDate ? releaseDate : "no "}</p>
+        </div>
+    </div>
+    <div class="modal-action">
+        <label for="my-modal-5" class="btn btn-sm btn-outline  border-orange-600 rounded-md text-orange-600 hover:bg-orange-600 hover:border-orange-600
+        hover:text-white ">close</label>
+    </div>
+   `;
+}
